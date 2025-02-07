@@ -262,7 +262,9 @@ function MovieList({ movies, onSelectMovie }) {
   return (
     <ul className="list list-movies">
       {movies?.map((movie) => (
-        <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
+        <Movie movie={movie}
+         key={movie.imdbID}
+         onSelectMovie={onSelectMovie} />
       ))}
     </ul>
   );
@@ -289,6 +291,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [userRating, setUserRating] = useState("");
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
+
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
@@ -304,7 +307,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Actors: actors,
     Director: director,
     Genre: genre,
-  } = movie;
+  } = movie;  //Destructuring gareko api bata aako value
 
   function handleAdd() {
     const newWatchedMovie = {
@@ -360,7 +363,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       document.title = `Movie | ${title}`;
 
       return function () {
-        document.title = "usePopcorn";
+        document.title = "D-Movies";
         // console.log(`Clean up effect for movie ${title}`);
       };
     },
